@@ -1,34 +1,27 @@
-#include<iostream>
-#include<algorithm>
-#include<string>
+#include <iostream>
+#include <string>
+#include <cstring>
+#include <cmath>
+#include <algorithm>
+
 using namespace std;
 
-
-int main() {
-	int N, B; 
+int main(void) {
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+	long long N, B;
+	string sum= "";
 	cin >> N >> B;
-
-	string result = "";
-
-	while (N > 0)
-	{
-		int r = N % B;
-
-		if (r < 10)
-		{
-			result += (r + '0');
+	while (N > 0){
+		long long i = N % B;
+		if (i > 9) {
+			sum += (i - 10 + 'A');
 		}
-		else
-		{
-			result += (r - 10 + 'A');
+		else {
+			sum += (i + '0');
 		}
-
 		N /= B;
 	}
-
-	reverse(result.begin(), result.end()); 
-
-	cout << result << '\n';
-
-	return 0;
+	reverse(sum.begin(), sum.end());
+	cout << sum;
 }
