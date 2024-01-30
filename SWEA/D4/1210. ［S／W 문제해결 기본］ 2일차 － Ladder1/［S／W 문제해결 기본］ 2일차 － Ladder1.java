@@ -7,7 +7,7 @@ class Solution {
 	public static void main(String[] args) throws Exception{
 		// TODO Auto-generated method stub
 		int arr[][] = new int[100][100];
-		int dy[] = {0,0,-1}, dx[] = {-1,1,0};
+		int dx[] = {-1,1,0};
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st;
 		StringBuilder sb = new StringBuilder();
