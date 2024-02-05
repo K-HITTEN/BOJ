@@ -16,6 +16,7 @@ void dijkstra(int k){
     while(!pq.empty()){
         int dist = pq.top().first, end = pq.top().second;
         pq.pop();
+        if(dist > arr2[end]) continue;
         for(int i = 0; i < arr[end].size(); i++){
             if(arr2[arr[end][i].first] == -1 || arr2[arr[end][i].first] > dist+arr[end][i].second){
                 arr2[arr[end][i].first] = dist+arr[end][i].second;
