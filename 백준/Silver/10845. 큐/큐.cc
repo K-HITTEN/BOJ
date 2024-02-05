@@ -29,15 +29,15 @@ int main(void){
             cout << q.size()<< "\n";
         }
         else if(s =="empty"){
-            if(q.size() == 0) cout << 1 << "\n";
+            if(q.empty()) cout << 1 << "\n";
             else cout << 0 << "\n";
         }
         else if(s == "front"){
-            if(q.size() == 0) cout << -1 << "\n";
+            if(q.empty()) cout << -1 << "\n";
             else cout << q.front() << "\n";
         }
         else{
-            if(q.size() == 0) cout << -1 << "\n";
+            if(q.empty()) cout << -1 << "\n";
             else cout << tmp << "\n";
         }
     }
