@@ -17,7 +17,7 @@ int main(void){
             q.push(tmp);
         }
         else if(s =="pop"){
-            if(q.size() == 0){
+            if(q.empty()){
                 cout << -1 << "\n";
             }
             else{
