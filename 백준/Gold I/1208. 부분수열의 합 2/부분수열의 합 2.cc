@@ -9,7 +9,7 @@ int long N,S,tgt[41], counts = 0;
 vector<int> lefts,rights;
 vector<long long>leftsum, rightsum;
 
-void permleft(int tgtIdx,int tgtSize, int next){
+void combleft(int tgtIdx,int tgtSize, int next){
     if(tgtIdx == tgtSize){
         int sum = 0;
         for(int i = 0; i < tgtSize; i++){
@@ -21,11 +21,11 @@ void permleft(int tgtIdx,int tgtSize, int next){
     }
     for(int i = next; i<lefts.size(); i++){
         tgt[tgtIdx] = lefts[i];
-        permleft(tgtIdx+1,tgtSize,i+1);
+        combleft(tgtIdx+1,tgtSize,i+1);
     }
 }
 
-void permright(int tgtIdx,int tgtSize, int next){
+void combright(int tgtIdx,int tgtSize, int next){
     if(tgtIdx == tgtSize){
         int sum = 0;
         for(int i = 0; i < tgtSize; i++){
@@ -37,7 +37,7 @@ void permright(int tgtIdx,int tgtSize, int next){
     }
     for(int i = next; i<rights.size(); i++){
         tgt[tgtIdx] = rights[i];
-        permright(tgtIdx+1,tgtSize,i+1);
+        combright(tgtIdx+1,tgtSize,i+1);
     }
 }
 
@@ -56,10 +56,10 @@ int main(void){
     sort(lefts.begin(),lefts.end());
     sort(rights.begin(),rights.end());
     for(int i = 1; i <=lefts.size(); i++){
-        permleft(0,i,0);
+        combleft(0,i,0);
     }
     for(int i = 1; i <=rights.size(); i++){
-        permright(0,i,0);
+        combright(0,i,0);
     }
     int li = 0, ri = rightsum.size()-1;
     sort(leftsum.begin(),leftsum.end());
