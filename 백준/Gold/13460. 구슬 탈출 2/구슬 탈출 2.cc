@@ -8,6 +8,7 @@ using namespace std;
 
 int map[10][10];
 int dy[4] = { -1,0,1,0 }, dx[4] = { 0,1,0,-1 };
+bool visited[10][10][10][10]={false,};
 
 int main(void) {
 	fastio;
@@ -38,6 +39,7 @@ int main(void) {
 		}
 	}
 	queue <tuple<pair<int, int>, pair<int, int>, int>> q;
+	visited[Ry][Rx][By][Bx] = true;
 	q.push({ {Ry,Rx},{By,Bx},0 });
 	while (!q.empty()) {
 		int ry = get<0>(q.front()).first, rx = get<0>(q.front()).second, by = get<1>(q.front()).first, bx = get<1>(q.front()).second, count = get<2>(q.front());
@@ -74,10 +76,10 @@ int main(void) {
 		        cout << count+1;
 		        return 0;
 		    }
-			if(ry == rdy && rx == rdx && by == bdy && bx == bdx) continue;
-			else if (count == 10) continue;
+		    if(visited[rdy][rdx][bdy][bdx] || count == 10)continue;
 			else {
 			    q.push({ {rdy,rdx},{bdy,bdx},count + 1 });
+			    visited[rdy][rdx][bdy][bdx] = true;
 			}
 		}
 	}
