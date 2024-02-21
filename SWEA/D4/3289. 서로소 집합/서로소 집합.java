@@ -46,7 +46,7 @@ public class Solution {
 	// pass compression
 	static int findSet(int x) {
 		if(parent[x] == x) return x;
-		else return findSet(parent[x]); // x 의 바로 위 부모가 최상위가 아니므로 x 의 부모의 부모를 또 찾는다.
+		else return parent[x] = findSet(parent[x]); // x 의 바로 위 부모가 최상위가 아니므로 x 의 부모의 부모를 또 찾는다.
 	}
 	
 	static void union(int x, int y) {
