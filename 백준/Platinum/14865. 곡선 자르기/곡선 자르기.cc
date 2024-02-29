@@ -2,6 +2,7 @@
 #include <vector>
 #include <queue>
 #include <climits>
+#include <cmath>
 #define fastio cin.tie(0)->ios_base::sync_with_stdio
 
 using namespace std;
@@ -23,7 +24,7 @@ struct cmp{
 };
 
 int main(void){
-    int N,sx,sy,ex,ey,nx,ny;
+    long long N, sx, sy, ex, ey, nx, ny;
     cin >> N >> sx >> sy;
     ex = sx;
     ey = sy;
@@ -31,11 +32,10 @@ int main(void){
     priority_queue<mountain,vector<mountain>,cmp> pq;
     for(int i = 1; i < N; i++){
         cin >> nx >> ny;
-        if(ey*ny < 0){
+        if((ey/abs(ey))*(ny/abs(ny)) < 0){
             info tmp;
             tmp.x = nx;
-            if(ny>0)tmp.op = 1;
-            else tmp.op = -1;
+            tmp.op = (ny-ey)/abs(ny-ey);
             q.push(tmp);
         }
         ex = nx;
@@ -44,8 +44,7 @@ int main(void){
     if(sy*ny <0){
         info tmp;
         tmp.x = nx;
-        if(ny>0)tmp.op = 1;
-        else tmp.op = -1;
+        tmp.op = (sy-ey)/abs(sy-ey);
         q.push(tmp);
     }
     if(q.front().op == -1){
@@ -67,8 +66,8 @@ int main(void){
         }
         pq.push(tmp);
     }
-    int x1 = INT_MIN, x2 = INT_MIN;
-    int case1 = 0, case2 = 0;
+    long long x1 = INT_MIN, x2 = INT_MIN;
+    long long case1 = 0, case2 = 0;
     while(!pq.empty()){
         mountain tmp = pq.top();
         pq.pop();
