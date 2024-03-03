@@ -41,7 +41,6 @@ void bfs(){
             int ny = tmp.y + dy[d], nx = tmp.x + dx[d];
             if(ny <0 || nx <0 || ny >= N || nx >= N || visited[ny][nx])continue;
             if(tmp.t >= min_time)return;
-            if(tmp.t >= min_time)return;
             t = tmp.t+1;
             safe--;
             visited[ny][nx] = true;
