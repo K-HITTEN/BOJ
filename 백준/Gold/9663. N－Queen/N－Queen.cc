@@ -5,7 +5,6 @@
 using namespace std;
 
 int N, count = 0;
-bool map[15][15] = {false,};
 bool straight[15] = {false,};
 bool left_cross[30] = {false,};
 bool right_cross[30] = {false,};
