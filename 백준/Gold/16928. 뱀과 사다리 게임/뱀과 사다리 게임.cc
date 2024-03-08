@@ -16,11 +16,11 @@ int main(void){
         info[tmp] = tmp2;
         transform[tmp] = true;
     }
-    priority_queue<pair<int,int>,vector<pair<int,int>>,greater<pair<int,int>>> pq;
+    queue<pair<int,int>> pq;
     visited[1] = true;
     pq.push({0,1});
     while(!pq.empty()){
-        pair<int,int> tmp = pq.top();
+        pair<int,int> tmp = pq.front();
         if(tmp.second == 100){
             cout << tmp.first;
             return 0;
