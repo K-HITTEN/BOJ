@@ -10,11 +10,17 @@ int main(void){
     int N, M, count = 0;
     string S;
     cin >> N >> M >> S;
-    for(int i = 2; i <=N; i++){
-        P += "OI";
-    }
-    for(int i = 0; i < M-(P.length()-1); i++){
-        if(S.substr(i,P.length()) == P) count++;
+    for(int i = 0; i < M; i++){
+        if (S[i] == 'O') continue;
+        int IOI = 0;
+        while(S[i+1] == 'O' && S[i+2] == 'I'){
+            IOI++;
+            if(IOI == N){
+                count++;
+                IOI--;
+            }
+            i+=2;
+        }
     }
     cout << count;
 }
