@@ -9,7 +9,6 @@ using namespace std;
 vector<pair<int,int>> outdegree[10001];
 vector<pair<int,int>> backdegree[10001];
 int indegree[10001] = {0,}, result[10001] = {0,};
-vector<pair<int,int>> road;
 bool visited[10001] = {false,};
 
 int main(void){
