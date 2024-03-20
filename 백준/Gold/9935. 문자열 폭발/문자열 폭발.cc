@@ -7,13 +7,13 @@ using namespace std;
 
 int main(void){
     fastio;
-    string s1, s2;
+    string s1, s2, tmp;
     cin >> s1 >> s2;
     stack<char> st;
     for(int i = 0; i < s1.length(); i++){
         st.push(s1[i]);
         if(s1[i]==s2[s2.length()-1] && st.size()>=s2.length()){
-            string tmp = "";
+            tmp = "";
             for(int j = 0; j < s2.length(); j++){
                 tmp += st.top();
                 st.pop();
@@ -26,12 +26,12 @@ int main(void){
     }
     if(st.empty())cout << "FRULA";
     else{
-        string answer = "";
+        tmp = "";
         while(!st.empty()){
-            answer += st.top();
+            tmp += st.top();
             st.pop();
         }
-        reverse(answer.begin(),answer.end());
-        cout << answer;
+        reverse(tmp.begin(),tmp.end());
+        cout << tmp;
     }
 }
