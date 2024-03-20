@@ -26,14 +26,12 @@ int main(void){
     }
     if(st.empty())cout << "FRULA";
     else{
-        stack<char> answer;
+        string answer = "";
         while(!st.empty()){
-            answer.push(st.top());
+            answer += st.top();
             st.pop();
         }
-        while(!answer.empty()){
-            cout << answer.top();
-            answer.pop();
-        }
+        reverse(answer.begin(),answer.end());
+        cout << answer;
     }
 }
