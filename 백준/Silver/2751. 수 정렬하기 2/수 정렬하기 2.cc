@@ -1,20 +1,16 @@
 #include <iostream>
-#include <vector>
 #include <algorithm>
+#define fastio cin.tie(0)->ios_base::sync_with_stdio(0)
 
 using namespace std;
 
-int main(void) {
-	cin.tie(NULL);
-	long long N, x;
-	cin >> N;
-	vector <long long> arr;
-	for (long long i = 0; i < N; i++) {
-		cin >> x;
-		arr.push_back(x);
-	}
-	sort(arr.begin(), arr.end());
-	for (long long i = 0; i < arr.size(); i++) {
-		cout << arr[i] << '\n';
-	}
+int arr[1000000] = {0,};
+
+int main(void){
+    fastio;
+    int N;
+    cin >> N;
+    for(int i = 0; i < N; i++)cin >> arr[i];
+    sort(arr,arr+N);
+    for(int i = 0; i < N; i++)cout << arr[i] << "\n";
 }
