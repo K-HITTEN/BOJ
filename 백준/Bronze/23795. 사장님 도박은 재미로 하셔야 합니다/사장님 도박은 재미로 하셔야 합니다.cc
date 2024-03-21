@@ -6,8 +6,7 @@ using namespace std;
 int main(void){
     fastio;
     int sum = 0, tmp;
-    while(true){
-        cin >> tmp;
+    while(cin >> tmp){
         if(tmp == -1)break;
         sum += tmp;
     }
