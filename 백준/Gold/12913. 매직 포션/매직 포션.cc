@@ -53,6 +53,7 @@ int main(void){
             cout << fixed << tmp.t;
             return 0;
         }
+        if(visited[tmp.city][tmp.drink])continue;
         visited[tmp.city][tmp.drink] = true;
         for(int i = 0; i < N; i++){
             if(i == tmp.city) continue;
