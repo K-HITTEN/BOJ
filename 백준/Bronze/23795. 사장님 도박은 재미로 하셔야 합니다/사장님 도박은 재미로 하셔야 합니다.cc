@@ -1,2 +1,2 @@
 #include <iostream>
-int s=0,t;int main(){while(std::cin>>t&&t!=-1)s+=t;std::cout<<s;}
+int s=0,t;int main(){for(;t!=-1;std::cin>>t)s+=t;std::cout<<s;}
