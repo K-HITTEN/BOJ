@@ -1,2 +1,2 @@
 #include <iostream>
-using namespace std;int main(){int sum=0,tmp;while(cin>>tmp&&tmp!=-1)sum+=tmp;cout<<sum;}
+int main(){int sum,tmp;sum=0;while(std::cin>>tmp&&tmp!=-1)sum+=tmp;std::cout<<sum;}
