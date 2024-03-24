@@ -1,12 +1,2 @@
 #include <iostream>
-#define fastio cin.tie(0)->ios_base::sync_with_stdio(0)
-
-using namespace std;
-
-int main(void){
-    fastio;
-    int T, S;
-    cin >> T >> S;
-    if(T>=12&&T<=16&&S==0)cout << 320;
-    else cout << 280;
-}
+int main(void){int T,S;std::cin>>T>>S;if(T>11&&T<17&&S==0)std::cout<<320;else std::cout<<280;}
