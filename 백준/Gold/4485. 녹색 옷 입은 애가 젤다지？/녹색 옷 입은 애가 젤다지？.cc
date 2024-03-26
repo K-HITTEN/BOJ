@@ -37,8 +37,7 @@ int main(void){
             }
         }
         info start;
-        start.y = 0;
-        start.x = 0;
+        start.y = start.x = 0;
         start.c = map[0][0];
         cost[0][0] = map[0][0];
         pq.push(start);
