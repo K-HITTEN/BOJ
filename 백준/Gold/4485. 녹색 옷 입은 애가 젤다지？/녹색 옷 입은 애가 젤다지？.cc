@@ -8,7 +8,7 @@
 using namespace std;
 
 int map[125][125] = {0,};
-int cost[126][126] = {0,};
+int cost[125][125] = {0,};
 int dy[4] = {-1,1,0,0},dx[4] = {0,0,-1,1}; 
 
 struct info{
@@ -30,7 +30,7 @@ int main(void){
     while(true){
         cin >> N;
         if(N == 0)break;
-        fill(&cost[0][0],&cost[125][125],INT_MAX);
+        fill(&cost[0][0],&cost[124][125],INT_MAX);
         for(int i = 0; i < N; i++){
             for(int j = 0; j < N; j++){
                 cin >> map[i][j];
