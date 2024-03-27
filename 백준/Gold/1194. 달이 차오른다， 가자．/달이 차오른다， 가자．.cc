@@ -1,55 +1,9 @@
 #include <iostream>
 #include <queue>
 #define fastio cin.tie(0)->ios_base::sync_with_stdio(0)
-
 using namespace std;
-
-char map[50][50] = {0,}; 
-bool visited[50][50][(1<<6)] = {false,};
-int dy[4]={-1,1,0,0},dx[4]={0,0,-1,1};
-
-struct info{
-    pair<int,int> now;
-    int key;
-    int move;  
-};
-
-int main(void){
-    fastio;
-    int N, M;
-    cin >> N >> M;
-    pair<int,int> start;
-    info tmp, tmp2;
-    for(int i = 0; i < N; i++){
-        for(int j = 0; j < M; j++){
-            cin >> map[i][j];
-            if(map[i][j] == '0'){
-                tmp.now.first = i;
-                tmp.now.second = j;
-            }
-        }
-    }
-    queue<info> q;
-    tmp.key = tmp.move = 0;
-    q.push(tmp);
-    while(!q.empty()){
-        tmp = q.front();
-        q.pop();
-        if(map[tmp.now.first][tmp.now.second] == '1'){
-            cout << tmp.move;
-            return 0;
-        }
-        for(int d =0; d < 4; d++){
-            int ny = tmp.now.first+dy[d], nx = tmp.now.second+dx[d];
-            if(ny<0||nx<0||ny>=N||nx>=M||visited[ny][nx][tmp.key]||map[ny][nx] =='#')continue;
-            if(65<=map[ny][nx] &&map[ny][nx]<=70 && (tmp.key&(1<<(map[ny][nx]-65)))==0) continue;
-            visited[ny][nx][tmp.key] = true;
-            tmp2.now = {ny,nx};
-            if(97<=map[ny][nx] && map[ny][nx] <=102)tmp2.key = (tmp.key|(1<<(map[ny][nx]-97)));
-            else tmp2.key = tmp.key;
-            tmp2.move = tmp.move+1;
-            q.push(tmp2);
-        }
-    }
-    cout << -1;
-}
+char B[50][50] = {0,}; 
+bool V[50][50][(1<<6)] = {false,};
+int Y[4]={-1,1,0,0},X[4]={0,0,-1,1},N,M;
+struct I{int x,y,k,m;};
+int main(void){fastio;cin>>N>>M;I t,u;for(int i=0;i<N;i++){for(int j=0;j<M;j++){cin>>B[i][j];if(B[i][j]=='0'){t.y=i;t.x=j;}}}queue<I>q;t.k=t.m=0;q.push(t);while(!q.empty()){t=q.front();q.pop();if(B[t.y][t.x]=='1'){cout<<t.m;return 0;}for(int d=0;d<4;d++){int o=t.y+Y[d],p=t.x+X[d];if(o<0||p<0||o>=N||p>=M||V[o][p][t.k]||B[o][p]=='#')continue;if(65<=B[o][p]&&B[o][p]<=70&&(t.k&(1<<(B[o][p]-65)))==0)continue;V[o][p][t.k]=true;u.y=o;u.x=p;if(97<=B[o][p]&&B[o][p]<=102)u.k=(t.k|(1<<(B[o][p]-97)));else u.k=t.k;u.m=t.m+1;q.push(u);}}cout<<-1;}
