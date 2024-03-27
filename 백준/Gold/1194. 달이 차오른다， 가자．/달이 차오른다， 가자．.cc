@@ -42,10 +42,10 @@ int main(void){
         for(int d =0; d < 4; d++){
             int ny = tmp.now.first+dy[d], nx = tmp.now.second+dx[d];
             if(ny<0||nx<0||ny>=N||nx>=M||visited[ny][nx][tmp.key]||map[ny][nx] =='#')continue;
-            if(65<=(int)map[ny][nx] && (int)map[ny][nx]<=70 && (tmp.key&(1<<((int)map[ny][nx]-64)))==0) continue;
+            if(65<=map[ny][nx] &&map[ny][nx]<=70 && (tmp.key&(1<<(map[ny][nx]-64)))==0) continue;
             visited[ny][nx][tmp.key] = true;
             tmp2.now = {ny,nx};
-            if(97<=(int)map[ny][nx] && (int)map[ny][nx] <=102)tmp2.key = (tmp.key|(1<<((int)map[ny][nx]-96)));
+            if(97<=map[ny][nx] && map[ny][nx] <=102)tmp2.key = (tmp.key|(1<<(map[ny][nx]-96)));
             else tmp2.key = tmp.key;
             tmp2.move = tmp.move+1;
             q.push(tmp2);
