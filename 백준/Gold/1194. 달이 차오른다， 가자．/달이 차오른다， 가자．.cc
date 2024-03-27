@@ -19,22 +19,21 @@ int main(void){
     int N, M;
     cin >> N >> M;
     pair<int,int> start;
+    info tmp, tmp2;
     for(int i = 0; i < N; i++){
         for(int j = 0; j < M; j++){
             cin >> map[i][j];
             if(map[i][j] == '0'){
-                start.first = i;
-                start.second = j;
+                tmp.now.first = i;
+                tmp.now.second = j;
             }
         }
     }
     queue<info> q;
-    info start_tmp;
-    start_tmp.now = start;
-    start_tmp.key = start_tmp.move = 0;
-    q.push(start_tmp);
+    tmp.key = tmp.move = 0;
+    q.push(tmp);
     while(!q.empty()){
-        info tmp = q.front();
+        tmp = q.front();
         q.pop();
         if(map[tmp.now.first][tmp.now.second] == '1'){
             cout << tmp.move;
@@ -50,7 +49,6 @@ int main(void){
             if(map[ny][nx] == 'E'&& (tmp.key&(1<<5))==0)continue;
             if(map[ny][nx] == 'F'&& (tmp.key&(1<<6))==0)continue;
             visited[ny][nx][tmp.key] = true;
-            info tmp2;
             tmp2.now = {ny,nx};
             if(map[ny][nx] == 'a')tmp2.key = (tmp.key|(1<<1));
             else if(map[ny][nx] == 'b')tmp2.key = (tmp.key|(1<<2));
