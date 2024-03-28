@@ -1,4 +1,5 @@
 #include <iostream>
+#include <climits>
 #include <algorithm>
 #define fastio cin.tie(0)->ios_base::sync_with_stdio(0)
  
@@ -15,8 +16,9 @@ int main(void){
         for(int i = 0; i < N; i++){
             for(int j = 0; j < N; j++){
                 cin >> map[i][j];
-                if(i != j&&map[i][j] == 0)map[i][j] = 1000;
+                if(map[i][j] == 0)map[i][j] = 1000;
             }
+            map[i][i] = 0;
         }
         for(int k = 0; k < N; k++){
             for(int i = 0; i < N; i++){
@@ -25,9 +27,9 @@ int main(void){
                 }
             }
         }
-        int min_value = 987654321;
+        int min_value = INT_MAX,sum;
         for(int i = 0; i < N; i++){
-            int sum = 0;
+            sum = 0;
             for(int j = 0; j < N; j++){
                 sum+=map[i][j];
             }
