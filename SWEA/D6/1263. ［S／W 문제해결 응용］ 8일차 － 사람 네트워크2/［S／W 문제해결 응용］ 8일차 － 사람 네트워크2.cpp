@@ -9,10 +9,11 @@ int map[1001][1001];
  
 int main(void){
     fastio;
-    int T,N,tmp;
+    int T,N,tmp,sum,min_value;
     cin >> T;
     for(int t = 1; t <=T; t++){
         cin >> N;
+        min_value=INT_MAX;
         for(int i = 0; i < N; i++){
             for(int j = 0; j < N; j++){
                 cin >> map[i][j];
@@ -27,7 +28,6 @@ int main(void){
                 }
             }
         }
-        int min_value = INT_MAX,sum;
         for(int i = 0; i < N; i++){
             sum = 0;
             for(int j = 0; j < N; j++){
