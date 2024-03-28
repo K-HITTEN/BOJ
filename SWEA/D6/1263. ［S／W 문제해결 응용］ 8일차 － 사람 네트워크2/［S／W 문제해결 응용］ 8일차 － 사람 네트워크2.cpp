@@ -14,10 +14,8 @@ int main(void){
         cin >> N;
         for(int i = 0; i < N; i++){
             for(int j = 0; j < N; j++){
-                cin >> tmp;
-                if(i==j)map[i][j] = 0;
-                else if(tmp == 1)map[i][j] = 1;
-                else map[i][j] = 987654321;
+                cin >> map[i][j];
+                if(i != j&&map[i][j] == 0)map[i][j] = 1000;
             }
         }
         for(int k = 0; k < N; k++){
