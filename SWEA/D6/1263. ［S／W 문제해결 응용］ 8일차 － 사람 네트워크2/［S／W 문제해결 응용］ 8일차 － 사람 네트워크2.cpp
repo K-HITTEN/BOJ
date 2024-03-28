@@ -20,18 +20,20 @@ int main(void){
                 else map[i][j] = 987654321;
             }
         }
-        int min_value = 987654321,sum;
-        bool FLAG = false;
         for(int k = 0; k < N; k++){
-            if(k == N-1)FLAG=true;
             for(int i = 0; i < N; i++){
-                sum = 0;
                 for(int j = 0; j <N; j++){
                     map[i][j] = min(map[i][j],map[i][k]+map[k][j]);
-                    if(FLAG)sum+=map[i][j];
                 }
-                if(FLAG&&sum<min_value)min_value = sum;
             }
+        }
+        int min_value = 987654321;
+        for(int i = 0; i < N; i++){
+            int sum = 0;
+            for(int j = 0; j < N; j++){
+                sum+=map[i][j];
+            }
+            min_value = min(min_value,sum);
         }
         cout << "#" << t << " " << min_value<<"\n";
     }
