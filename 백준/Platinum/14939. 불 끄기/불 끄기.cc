@@ -28,7 +28,7 @@ int main(void){
         for(int j = 0; j < 10; j++){
             cin >> temp;
             if(temp=='O')map[i][j] = true;
-            else map[i][j] == false;
+            else map[i][j] = false;
         }
     }
     for(int k = 0; k < (1<<10); k++){
