@@ -12,7 +12,6 @@ struct shark{
     int dy;
     int dx;
     int z;
-    int day;
 };
 
 pair<int,int> map[101][101];
@@ -34,7 +33,7 @@ int main(void){
             case 4: dy = 0; dx = -1; break;
         }
         map[r][c] = {i,z};
-        q.push({i,r,c,s,dy,dx,z,0});
+        q.push({i,r,c,s,dy,dx,z});
     }
     for(int i = 1; i <= C; i++){
         for(int j = 1; j <= R; j++){
