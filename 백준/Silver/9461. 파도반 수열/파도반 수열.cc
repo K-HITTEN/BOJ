@@ -7,9 +7,7 @@ long dp[101] = {0,};
 
 int main(void){
    fastio;
-   dp[1] = 1;
-   dp[2] = 1;
-   dp[3] = 1;
+   dp[1] = dp[2] = dp[3] = 1;
    for(int i = 4; i < 101; i++){
        dp[i] = dp[i-3] + dp[i-2];
    }
@@ -20,5 +18,3 @@ int main(void){
        cout << dp[n] << '\n';
    }
 }
-
-
