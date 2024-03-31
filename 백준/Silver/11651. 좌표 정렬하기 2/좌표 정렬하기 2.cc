@@ -17,7 +17,7 @@ int main(void) {
 	int N, x, y;
 	cin >> N;
 	vector <pair<int, int>> arr;
-	for (long long i = 0; i < N; i++) {
+	for (int i = 0; i < N; i++) {
 		cin >> x >> y;
 		arr.push_back({ x,y });
 	}
