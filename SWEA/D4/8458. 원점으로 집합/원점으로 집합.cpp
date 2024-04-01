@@ -5,7 +5,7 @@
 using namespace std;
 
 bool visited[10];
-int check[10], idx_check[10];
+int check[10];
 
 int main(void){
     fastio;
@@ -36,7 +36,6 @@ int main(void){
                     if((move_sum-check[i])%2==1)continue;
                     idx++;
                     visited[i] = true;
-                    idx_check[i] = move_count;
                 }
             }
             if(idx == N)break;
