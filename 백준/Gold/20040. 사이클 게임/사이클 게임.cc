@@ -1,5 +1,4 @@
 #include <iostream>
-#include <queue>
 #define fastio cin.tie(0)->ios_base::sync_with_stdio(0)
 
 using namespace std;
@@ -19,24 +18,19 @@ void merge(int x, int y){
 
 int main(void){
     fastio;
-    int n,m, tmp1, tmp2,idx = 0;
+    int n,m, tmp1, tmp2;
+    bool FLAG = false;
     cin >> n >> m;
     for(int i = 0; i < n; i++)parent[i] = i;
-    queue<pair<int,int>> q;
-    for(int i = 0; i < m; i++){
+    for(int i = 1; i <= m; i++){
         cin>> tmp1 >> tmp2;
-        q.push({tmp1, tmp2});
-    }
-    while(!q.empty()){
-        pair<int,int> tmp = q.front();
-        idx++;
-        q.pop();
-        if(find(tmp.first) == find(tmp.second)){
-            cout << idx;
-            return 0;
+        if(FLAG)continue;
+        if(find(tmp1) == find(tmp2)){
+            cout << i;
+            FLAG = true;
         }else{
-            merge(tmp.first,tmp.second);
+            merge(tmp1,tmp2);
         }
     }
-    cout << 0;
+    if(!FLAG)cout << 0;
 }
