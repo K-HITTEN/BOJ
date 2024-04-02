@@ -16,7 +16,7 @@ struct info{
     long long y;
 };
 
-vector<info> v,answer,temp;
+vector<info> v;
 
 struct cmp1{
     bool operator()(info &a, info &b){
@@ -46,18 +46,14 @@ int main(void){
     }
     sort(v.begin(),v.end(),cmp1());
     sort(v.begin()+1,v.end(),cmp2());
+    int tmp = v.size()-1;
+    for(int i = tmp; i>=1; i--){
+        if(ccw(v[0].x,v[0].y,v[tmp-1].x,v[tmp-1].y,v[tmp].x,v[tmp].y)<=0)tmp--;
+        else break;
+    }
+    reverse(v.begin()+tmp,v.end());
+    cout << v.size() << "\n";
     for(int i = 0; i < v.size(); i++){
-        while(answer.size()>=2&&ccw(answer[answer.size()-2].x,answer[answer.size()-2].y,answer[answer.size()-1].x,answer[answer.size()-1].y,v[i].x,v[i].y)<0){
-            temp.push_back(answer.back());
-            answer.pop_back();
-        }
-        answer.push_back(v[i]);
-    }
-    for(int i = temp.size()-1; i >= 0; i--){
-        answer.push_back(temp[i]);
-    }
-    cout << answer.size() << "\n";
-    for(int i = 0; i < answer.size(); i++){
-        cout << answer[i].x << " " << answer[i].y << "\n";
+        cout << v[i].x << " " << v[i].y << "\n";
     }
 }
