@@ -1,32 +1,3 @@
 #include <iostream>
-#define fastio cin.tie(0)->ios_base::sync_with_stdio(0)
-
 using namespace std;
-
-int main(void){
-    fastio;
-    int H,D,day;
-    double U, F, current, nowup;
-    while(true){
-        cin >> H >> U >> D >> F;
-        if(H == 0)break;
-        day = 1;
-        current = 0;
-        nowup = U;
-        while(true){
-            current += nowup;
-            if(current>H){
-                cout << "success on day " << day <<"\n";
-                break;
-            }
-            current -= D;
-            if(current < 0){
-                cout <<"failure on day " << day << "\n";
-                break;
-            }
-            day++;
-            nowup -= U*(F/100.0);
-            if(nowup < 0)nowup = 0;
-        }
-    }
-}
+int main(){double H,D,d,U,F,c,n;while(1){cin>>H>>U>>D>>F;if(H==0)break;d=1;c=0;n=U;while(1){c+=n;if(c>H){cout<<"success on day "<<d<<"\n";break;}c-=D;if(c<0){cout<<"failure on day "<<d<<"\n";break;}d++;n-=U*(F/100.0);if(n<0)n=0;}}}
