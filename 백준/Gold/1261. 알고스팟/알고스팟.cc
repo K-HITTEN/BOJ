@@ -4,9 +4,7 @@
 
 using namespace std;
 
-int N, M, result = 0;
-int map[100][100];
-int dy[4]={-1,1,0,0}, dx[4]={0,0,-1,1};
+int N, M, result = 0, map[100][100], dy[4]={-1,1,0,0}, dx[4]={0,0,-1,1};
 bool visited[100][100];
 queue<pair<int,int>> q;
 
