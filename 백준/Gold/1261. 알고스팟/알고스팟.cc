@@ -8,11 +8,11 @@ int N, M, result = 0;
 int map[100][100];
 int dy[4]={-1,1,0,0}, dx[4]={0,0,-1,1};
 bool visited[100][100];
+queue<pair<int,int>> q;
 
 void wall(){
     fill(&visited[0][0],&visited[99][100],false);
     visited[0][0] = true;
-    queue<pair<int,int>> q;
     q.push({0,0});
     while(!q.empty()){
         pair<int,int> tmp = q.front();
@@ -39,7 +39,6 @@ int main(void){
         }
     }
     while(true){
-        queue<pair<int,int>> q;
         q.push({0,0});
         fill(&visited[0][0],&visited[99][100],false);
         visited[0][0] = true;
