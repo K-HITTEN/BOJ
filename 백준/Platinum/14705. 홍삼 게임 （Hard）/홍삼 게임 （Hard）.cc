@@ -21,11 +21,7 @@ int main(void){
     while(!q.empty()){
         tuple<int,int,int> tmp = q.front();
         q.pop();
-        if(get<0>(tmp) == 1 && 2*get<2>(tmp)-1>=turn){
-            cout << turn; 
-            return 0;
-        }
-        if(get<0>(tmp) == 2 && 2*get<2>(tmp)>=turn){
+        if((get<0>(tmp) == 1 && 2*get<2>(tmp)-1>=turn)||(get<0>(tmp) == 2 && 2*get<2>(tmp)>=turn)){
             cout << turn; 
             return 0;
         }
@@ -36,25 +32,25 @@ int main(void){
                 cout << 2*get<2>(tmp)-1;
                 return 0;
             }
+            if(Bvisited[position][(get<2>(tmp)+1)%2]){
+                turn = min(turn,2*get<2>(tmp));
+            }
             if(!Avisited[position][(get<2>(tmp)+1)%2]){
                 Avisited[position][(get<2>(tmp)+1)%2] = true;
                 q.push({1,position,get<2>(tmp)+1});
             }
-            int position2 = get<1>(tmp) - Da;
-            if(position2 < 1) position2 = N + position2;
-            if(Bvisited[position2][get<2>(tmp)%2]){
+            position = get<1>(tmp) - Da;
+            if(position < 1) position = N + position;
+            if(Bvisited[position][get<2>(tmp)%2]){
                 cout << 2*get<2>(tmp)-1;
                 return 0;
             }
             if(Bvisited[position][(get<2>(tmp)+1)%2]){
                 turn = min(turn,2*get<2>(tmp));
             }
-            if(Bvisited[position2][(get<2>(tmp)+1)%2]){
-                turn = min(turn,2*get<2>(tmp));
-            }
-            if(!Avisited[position2][(get<2>(tmp)+1)%2]){
-                Avisited[position2][(get<2>(tmp)+1)%2] = true;
-                q.push({1,position2,get<2>(tmp)+1});
+            if(!Avisited[position][(get<2>(tmp)+1)%2]){
+                Avisited[position][(get<2>(tmp)+1)%2] = true;
+                q.push({1,position,get<2>(tmp)+1});
             }
         }else{
             int position = get<1>(tmp) + Db;
@@ -63,25 +59,25 @@ int main(void){
                 cout << 2*get<2>(tmp);
                 return 0;
             }
+            if(Avisited[position][get<2>(tmp)%2]){
+                turn = min(turn,2*get<2>(tmp)+1);
+            }
             if(!Bvisited[position][(get<2>(tmp)+1)%2]){
                 Bvisited[position][(get<2>(tmp)+1)%2] = true;
                 q.push({2,position,get<2>(tmp)+1});
             }
-            int position2 = get<1>(tmp) - Db;
-            if(position2 < 1) position2 = N + position2;
-            if(Avisited[position2][(get<2>(tmp)+1)%2]){
+            position = get<1>(tmp) - Db;
+            if(position < 1) position = N + position;
+            if(Avisited[position][(get<2>(tmp)+1)%2]){
                 cout << 2*get<2>(tmp);
                 return 0;
             }
             if(Avisited[position][get<2>(tmp)%2]){
                 turn = min(turn,2*get<2>(tmp)+1);
             }
-            if(Avisited[position2][get<2>(tmp)%2]){
-                turn = min(turn,2*get<2>(tmp)+1);
-            }
-            if(!Bvisited[position2][(get<2>(tmp)+1)%2]){
-                Bvisited[position2][(get<2>(tmp)+1)%2] = true;
-                q.push({2,position2,get<2>(tmp)+1});
+            if(!Bvisited[position][(get<2>(tmp)+1)%2]){
+                Bvisited[position][(get<2>(tmp)+1)%2] = true;
+                q.push({2,position,get<2>(tmp)+1});
             }
         }
     }
