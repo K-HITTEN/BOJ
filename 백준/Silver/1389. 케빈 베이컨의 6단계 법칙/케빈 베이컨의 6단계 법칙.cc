@@ -1,6 +1,5 @@
 #include <iostream>
 #include <algorithm>
-#include <cmath>
 #define fastio cin.tie(0)->ios_base::sync_with_stdio(0)
 
 using namespace std;
@@ -22,7 +21,6 @@ int main(void){
         for(int i = 1; i <= N; i++){
             for(int j = 1; j <= N; j++){
                 arr[i][j] = min(arr[i][j],arr[i][k]+arr[k][j]);
-                
             }
         }
     }
