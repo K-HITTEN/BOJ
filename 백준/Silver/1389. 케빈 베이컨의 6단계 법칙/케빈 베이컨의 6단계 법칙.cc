@@ -1,39 +1,44 @@
 #include <iostream>
 #include <algorithm>
 #define fastio cin.tie(0)->ios_base::sync_with_stdio(0)
-
 using namespace std;
 
-int arr[101][101];
+int N, M;
+const int INF = 1e9;
+int dist[101][101];
 
-int main(void){
+int main(){
     fastio;
-    fill(&arr[0][0],&arr[100][100],500001);
-    int N, M, tmp1, tmp2;
-    cin>> N >> M;
-    for(int i = 0; i < M; i++){
-        cin >> tmp1 >> tmp2;
-        arr[tmp1][tmp2] = 1;
-        arr[tmp2][tmp1] = 1;
+    int a, b;
+    cin >> N >> M;
+    fill(&dist[0][0], &dist[0][0] + 101*101, INF);
+    for(int i=0; i<M; i++){
+        cin >> a >> b;
+        dist[a][b] = 1;
+        dist[b][a] = 1;
     }
-    for(int i = 1; i <= N; i++) arr[i][i] = 0;
-    for(int k = 1; k <= N; k++){
-        for(int i = 1; i <= N; i++){
-            for(int j = 1; j <= N; j++){
-                arr[i][j] = min(arr[i][j],arr[i][k]+arr[k][j]);
+    for(int i=1; i<=N; i++){          
+        for(int j=1; j<=N; j++){      
+            for(int k=1; k<=N; k++){ 
+                dist[j][k] = min(dist[j][k] , dist[j][i]+dist[i][k]);
             }
         }
     }
-    int min = 500001, result = 0;
-    for(int i = 1; i <= N; i++){
-        arr [i][0] = 0; 
-        for(int j = 1; j <= N; j++){
-            arr[i][0] += arr[i][j];
+    
+    int m = INF;
+    int ans = 1;
+    
+    for(int i=1; i<=N; i++){
+        int sum = 0;
+        for(int j=1; j<=N; j++){
+            sum += dist[i][j];
         }
-        if(min>arr[i][0]){
-            min = arr[i][0];
-            result = i;
+        if(sum < m){
+            ans = i;
+            m = sum;
         }
     }
-    cout << result;
+    cout << ans;
+
+    return 0;
 }
