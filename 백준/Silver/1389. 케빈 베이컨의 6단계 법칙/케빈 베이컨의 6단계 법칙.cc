@@ -1,44 +1,42 @@
 #include <iostream>
-#include <algorithm>
+#include <queue>
+#include <vector>
 #define fastio cin.tie(0)->ios_base::sync_with_stdio(0)
+
 using namespace std;
 
-int N, M;
-const int INF = 1e9;
-int dist[101][101];
+vector<int> v[101];
+bool visited[101];
 
-int main(){
+int main(void){
     fastio;
-    int a, b;
+    int N, M, tmp1, tmp2, res = 0, min_val = 500001;
+    queue<pair<int,int>> q;
     cin >> N >> M;
-    fill(&dist[0][0], &dist[0][0] + 101*101, INF);
-    for(int i=0; i<M; i++){
-        cin >> a >> b;
-        dist[a][b] = 1;
-        dist[b][a] = 1;
+    for(int i = 0; i < M; i++){
+        cin >> tmp1 >> tmp2;
+        v[tmp1].push_back(tmp2);
+        v[tmp2].push_back(tmp1);
     }
-    for(int i=1; i<=N; i++){          
-        for(int j=1; j<=N; j++){      
-            for(int k=1; k<=N; k++){ 
-                dist[j][k] = min(dist[j][k] , dist[j][i]+dist[i][k]);
+    for(int i = 1; i <= N; i++){
+        fill(visited,visited+101,false);
+        int count = 0;
+        visited[i] = true;
+        q.push({0,i});
+        while(!q.empty()){
+            pair<int,int> tmp = q.front();
+            q.pop();
+            for(int j = 0; j < v[tmp.second].size(); j++){
+                if(visited[v[tmp.second][j]])continue;
+                visited[v[tmp.second][j]] = true;
+                count += (tmp.first+1);
+                q.push({tmp.first+1,v[tmp.second][j]});
             }
         }
-    }
-    
-    int m = INF;
-    int ans = 1;
-    
-    for(int i=1; i<=N; i++){
-        int sum = 0;
-        for(int j=1; j<=N; j++){
-            sum += dist[i][j];
-        }
-        if(sum < m){
-            ans = i;
-            m = sum;
+        if(min_val > count){
+            min_val = count;
+            res = i;
         }
     }
-    cout << ans;
-
-    return 0;
+    cout << res;
 }
