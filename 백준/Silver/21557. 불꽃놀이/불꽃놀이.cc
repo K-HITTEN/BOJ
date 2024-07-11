@@ -12,7 +12,11 @@ int main(void){
     v.resize(N);
     for(int i = 0; i < N; i++)cin >> v[i];
     for(int i = 0; i < N-2; i++){
-        if(v[0] > v[N-1])v[0]--;
+        if(i == N-3){
+            v[0]--;
+            v[N-1]--;
+        }
+        else if(v[0] > v[N-1])v[0]--;
         else v[N-1]--;
     }
     cout << max(v[0],v[N-1]);
