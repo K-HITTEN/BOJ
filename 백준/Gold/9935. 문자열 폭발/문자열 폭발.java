@@ -7,6 +7,7 @@ public class Main
     static char input[];
     static Stack<Character> stack = new Stack<>();
     static StringBuilder sb = new StringBuilder();
+    static StringBuilder temp = new StringBuilder();
     public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
@@ -17,11 +18,11 @@ public class Main
         
         for(int j=0;j<len_i;j++) {
             stack.push(input[j]);
-            if(stack.size()<len_b || input[j] != bomb.charAt(len_b-1)) continue;
+            if(stack.size()<len_b || stack.peek() != bomb.charAt(len_b-1)) continue;
             
-            StringBuilder temp = new StringBuilder();
+            temp.setLength(0);
             
-            for(int i=0;i<len_b;i++){
+            for(int i=len_b-1;i>=0;i--){
                 temp.append(stack.pop());
             }
             
@@ -33,15 +34,12 @@ public class Main
             }
         }
         
-        if(stack.isEmpty()) sb.append("FRULA");
+        if(stack.size() == 0) sb.append("FRULA");
         else{
-            Stack<Character> answer = new Stack<>();
-            while (!stack.isEmpty()) {
-                answer.push(stack.pop());
+            while(!stack.isEmpty()){
+                sb.append(stack.pop());
             }
-            while (!answer.isEmpty()) {
-                sb.append(answer.pop());
-            }
+            sb.reverse();
         }
         System.out.print(sb);
     }
