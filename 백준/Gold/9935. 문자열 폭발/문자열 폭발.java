@@ -1,45 +1,48 @@
-import java.io.*;
 import java.util.*;
+import java.io.*;
 
-public class Main {
-    public static void main(String[] args) throws IOException {
+public class Main
+{
+    static String bomb;
+    static char input[];
+    static Stack<Character> stack = new Stack<>();
+    static StringBuilder sb = new StringBuilder();
+    public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
+        input = br.readLine().toCharArray();
+        bomb = br.readLine();
+
+        int len_b = bomb.length(), len_i = input.length;
         
-        String s1 = br.readLine();
-        String s2 = br.readLine();
-        Stack<Character> st = new Stack<>();
-        
-        for (int i = 0; i < s1.length(); i++) {
-            st.push(s1.charAt(i));
-            if (s1.charAt(i) == s2.charAt(s2.length() - 1) && st.size() >= s2.length()) {
-                StringBuilder tmp = new StringBuilder();
-                for (int j = 0; j < s2.length(); j++) {
-                    tmp.append(st.pop());
-                }
-                tmp.reverse();
-                if (!tmp.toString().equals(s2)) {
-                    for (int j = 0; j < tmp.length(); j++) {
-                        st.push(tmp.charAt(j));
-                    }
+        for(int j=0;j<len_i;j++) {
+            stack.push(input[j]);
+            if(stack.size()<len_b || input[j] != bomb.charAt(len_b-1)) continue;
+            
+            StringBuilder temp = new StringBuilder();
+            
+            for(int i=0;i<len_b;i++){
+                temp.append(stack.pop());
+            }
+            
+            temp.reverse();
+            if(!bomb.equals(temp.toString())) {
+                for(int i=0;i<temp.length();i++){
+                    stack.push(temp.charAt(i));
                 }
             }
         }
         
-        if (st.isEmpty()) {
-            bw.write("FRULA");
-        } else {
+        if(stack.isEmpty()) sb.append("FRULA");
+        else{
             Stack<Character> answer = new Stack<>();
-            while (!st.isEmpty()) {
-                answer.push(st.pop());
+            while (!stack.isEmpty()) {
+                answer.push(stack.pop());
             }
             while (!answer.isEmpty()) {
-                bw.write(answer.pop());
+                sb.append(answer.pop());
             }
         }
-        
-        bw.flush();
-        bw.close();
-        br.close();
+        System.out.print(sb);
     }
 }
