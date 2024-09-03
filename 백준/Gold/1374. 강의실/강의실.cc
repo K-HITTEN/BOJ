@@ -34,8 +34,7 @@ int main(void){
        while(!pq.empty()&&pq.top().f<=v[i].s){
            pq.pop();
        }
-       int tmp = pq.size();
-       res = max(res,tmp);
+       res = max(res,(int)pq.size());
     }
     cout << res;
 }
