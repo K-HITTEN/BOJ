@@ -1,2 +1,3 @@
-#include<iostream>
-int N,n;std::string s,S;int main(void){while(std::cin>>s>>n)if(n>N){N=n;S=s;}std::cout<<S;}
+#include<stdio.h>
+#include<string.h>
+int N,n;char s[50],S[50];int main(void){while(scanf("%s %d",s,&n)>1)if(n>N){N=n;strcpy(S,s);}printf("%s",S);}
