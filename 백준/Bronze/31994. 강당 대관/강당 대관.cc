@@ -1,17 +1,2 @@
 #include<iostream>
-#define fastio cin.tie(0)->ios_base::sync_with_stdio(0)
-
-using namespace std;
-
-int main(void){
-    fastio;
-    int N = 0, n;
-    string s, ret;
-    while(cin>> s >> n){
-        if(n>N){
-            N = n;
-            ret = s;
-        }
-    }
-    cout<<ret;
-}
+int N,n;std::string s,S;int main(void){while(std::cin>>s>>n)if(n>N){N=n;S=s;}std::cout<<S;}
