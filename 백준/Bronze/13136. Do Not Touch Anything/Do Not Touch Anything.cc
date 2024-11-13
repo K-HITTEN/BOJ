@@ -9,6 +9,6 @@ int main(){
     x = r/n;
     if(r%n)x++;
     y = c/n;
-    if (c%n)y++;
+    if(c%n)y++;
     cout<<x*y;
 }
