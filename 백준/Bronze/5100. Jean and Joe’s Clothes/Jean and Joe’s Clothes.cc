@@ -1,5 +1,4 @@
 #include<iostream>
-#include<cctype>
 #include<string>
 #define K <<' '<<
 
@@ -17,20 +16,9 @@ int main(){
             cin >> s;
             if(s=="M"||s=="L")a++;
             else if(s=="S")b++;
-            else {
-                bool FLAG = false;
-                for(int i = 0; i < s.length(); i++){
-                    if(!isdigit(s[0])){
-                        FLAG = true;
-                        break;
-                    }
-                }
-                if(FLAG)e++;
-                else {
-                    if(stoi(s)>=12)c++;
-                    else d++;
-                }
-            }
+            else if(s=="X")e++;
+            else if(stoi(s)>=12)c++;
+            else d++;
         }
         cout<<a K c K d K b K e<<"\n"; 
     }
