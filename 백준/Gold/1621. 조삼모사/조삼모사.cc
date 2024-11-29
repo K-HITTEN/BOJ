@@ -11,28 +11,11 @@ int main(){
     cin >> N >> K >> C;
     for(int i = 1; i <= N; i++)cin >> arr[i];
     for(int i = 1; i <= N; i++){
-        if(i-K>=0){
-            if(get<0>(dp[i-K])+C == get<0>(dp[i-1])+arr[i]){
-                if(get<1>(dp[i-K])<get<1>(dp[i-1])){
-                    dp[i] = dp[i-K];
-                    get<0>(dp[i]) += C;
-                    get<1>(dp[i])++;
-                    get<2>(dp[i]) = i-K;
-                }else{
-                    dp[i] = dp[i-1];
-                    get<0>(dp[i]) += arr[i];
-                    get<2>(dp[i]) = i-1;
-                }
-            }else if(get<0>(dp[i-K])+C < get<0>(dp[i-1])+arr[i]){
-                dp[i] = dp[i-K];
-                get<0>(dp[i]) += C;
-                get<1>(dp[i])++;
-                get<2>(dp[i]) = i-K;
-            }else{
-                dp[i] = dp[i-1];
-                get<0>(dp[i]) += arr[i];
-                get<2>(dp[i]) = i-1;
-            }
+        if(i-K>=0&&((get<0>(dp[i-K])+C == get<0>(dp[i-1])+arr[i]&&get<1>(dp[i-K])<get<1>(dp[i-1]))||get<0>(dp[i-K])+C < get<0>(dp[i-1])+arr[i])){
+            dp[i] = dp[i-K];
+            get<0>(dp[i]) += C;
+            get<1>(dp[i])++;
+            get<2>(dp[i]) = i-K;
         }else{
             dp[i] = dp[i-1];
             get<0>(dp[i]) += arr[i];
