@@ -3,7 +3,7 @@
 
 using namespace std;  
 
-tuple<long long,int,int> dp[1000001]; // 값, 개수, 추적
+tuple<int,int,int> dp[1000001];
 int N, K, C, arr[1000001];
 
 int main(){
