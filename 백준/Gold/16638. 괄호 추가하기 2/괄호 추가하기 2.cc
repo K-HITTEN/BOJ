@@ -32,7 +32,6 @@ void calc(vector<info> arr){
         if(arr[i].c == '*'&&!arr[i].visited){
             arr[i].visited = true;
             int k = arr[i-1].c*arr[i+1].c;
-            // cout << arr[i-1].c << " " << arr[i+1].c << " " << k << endl;
             for(int j = i; j > 0; j-=2){
                 if(arr[j].visited)arr[j-1].c = k;
                 else break;
