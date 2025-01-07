@@ -13,7 +13,6 @@ void calc(int one, int two, int diff, int cnt){
     tmp[0]=one;
     tmp[1]=two;
     for(int i = 2; i < N; i++){
-        // cout << one << " " << two << " " << diff << " " << i << " " << v[i] << " " << tmp[i-1]<< endl;
         if(!(v[i]==tmp[i-1]+diff||v[i]+1==tmp[i-1]+diff||v[i]-1==tmp[i-1]+diff))return;
         if(v[i]+1==tmp[i-1]+diff||v[i]-1==tmp[i-1]+diff)cnt++;
         tmp[i] = tmp[i-1]+diff;
