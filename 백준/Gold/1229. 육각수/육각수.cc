@@ -20,7 +20,7 @@ int main(){
             t++;
         }
     }
-    for(int i = 1; i < 1000001; i++){
+    for(int i = 1; i <= N; i++){
         for(int j = 0; j < v.size(); j++){
             if(i>=v[j]){
                 dp[i] = min(dp[i], dp[i-v[j]]+1);
