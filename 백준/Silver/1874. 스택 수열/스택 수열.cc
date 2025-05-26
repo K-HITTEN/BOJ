@@ -1,31 +1,28 @@
-#include <iostream>
-#include <vector>
-#include <stack>
-#define fastio cin.tie(0)->ios_base::sync_with_stdio(0)
+#include<iostream>
+#include<vector>
+#include<stack>
 
 using namespace std;
 
+stack<int> st;
+vector<int> v;
 
-int main(void){
-    fastio;
-    int n, idx = 0;
-    cin >> n;
-    vector<int> v;
-    vector<char> c;
-    stack<int> s;
-    v.resize(n);
-    for(int i = 0; i <n; i++){
-        cin >> v[i];
-    }
-    for(int i = 1; i<=n; i++){
-        s.push(i);
-        c.push_back('+');
-        while(!s.empty()&&s.top() == v[idx]){
+int main(){
+    cin.tie(0)->ios_base::sync_with_stdio(0);
+    int N, idx = 0;
+    string s = "";
+    cin >> N;
+    v.resize(N);
+    for(int i = 0; i < N; i++)cin>>v[i];
+    for(int i = 1; i <= N; i++){
+        st.push(i);
+        s+="+\n";
+        while(!st.empty()&&st.top()==v[idx]){
+            st.pop();
+            s+="-\n";
             idx++;
-            c.push_back('-');
-            s.pop();
         }
     }
-    if(!s.empty()) cout << "NO";
-    else for(int i = 0; i<c.size(); i++) cout << c[i] <<"\n";
+    if(st.empty())cout<<s;
+    else cout << "NO";
 }
