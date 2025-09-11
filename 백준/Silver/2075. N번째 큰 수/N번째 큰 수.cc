@@ -12,8 +12,10 @@ int main(){
     for(int i = 0; i < N; i++){
         for(int j = 0; j < N; j++){
             cin >> tmp;
-            pq.push(tmp);
-            if(pq.size()>N)pq.pop();
+            if(pq.empty()||pq.top()<tmp){
+                pq.push(tmp);
+                if(pq.size()>N)pq.pop();
+            }
         }
     }
     cout << pq.top();
