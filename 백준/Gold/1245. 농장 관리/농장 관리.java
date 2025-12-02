@@ -45,7 +45,9 @@ class Main{
         System.out.print(ret);
     }
     
-    static class Info{
+}
+
+class Info{
         int y, x, n;
         Info(int y, int x, int n){
             this.y = y;
@@ -53,4 +55,3 @@ class Main{
             this.n = n;
         }
     }
-}
